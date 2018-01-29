@@ -6,13 +6,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
 </head>
 
 <body>
+    <style>
+        div {
+            font-size: 40px;
+            padding: 25px;
+            margin-top: 50px;
+            margin-left: 16px;
+            margin-right: 16px;
+            background-color: red;
+            text-align: center;
+        }
+
+        #count {
+            padding: 0px;
+        }
+
+        .inner {
+            padding: 15px;
+            background-color: green;
+            margin: 0px;
+        }
+    </style>
+    <script>
+        names = [
+            "MouseEnter",
+            "MouseOver"
+        ]
+
+        $(names).each(function (index, elem) {
+            $("body").append($("<div>")
+                .attr("id", elem)
+                .attr("class", "outer"))
+        })
+
+        $("body").append($("<div>")
+            .attr("id", "count"));
+
+        $(".outer").each(function (index) {
+            $("<div>")
+                .text(names[index])
+                .addClass("inner")
+                .appendTo(this);
+        })
+
+        var i = 0;
+        const animationDelay = 200;
+
+        $("#" + names[0]).on("mouseenter", function () {
+            i++;
+            $("#count").text(i).fadeIn(animationDelay);
+            $(this).css("color", "magenta");
+        }).mouseleave(function () {
+            // i++;
+            $("#count").text(i).fadeOut(animationDelay);
+            $(this).css("color", "black")
+        });
+
+        $("#" + names[1]).mouseover(function () {
+            i++;
+            $("#count").text(i).fadeIn(animationDelay);
+            $(this).css("color", "magenta")
+        }).mouseout(function () {
+            // i++;
+            $("#count").text(i).fadeOut(animationDelay);
+            $(this).css("color", "black")
+        });
+    </script>
 </body>
 
 </html>
