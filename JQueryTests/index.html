@@ -57,25 +57,30 @@
         var i = 0;
         const animationDelay = 200;
 
-        $("#" + names[0]).on("mouseenter", function () {
-            i++;
-            $("#count").text(i).fadeIn(animationDelay);
-            $(this).css("color", "magenta");
-        }).mouseleave(function () {
-            // i++;
-            $("#count").text(i).fadeOut(animationDelay);
-            $(this).css("color", "black")
+        $("#" + names[0]).on({
+            mouseenter: function () {
+                i++;
+                $("#count").text(i).fadeIn(animationDelay);
+                $(this).css({ color: "magenta" });
+            },
+            mouseleave: function () {
+                $("#count").text(i).fadeOut(animationDelay);
+                $(this).css("color", "black")
+            }
         });
 
-        $("#" + names[1]).mouseover(function () {
-            i++;
-            $("#count").text(i).fadeIn(animationDelay);
-            $(this).css("color", "magenta")
-        }).mouseout(function () {
-            // i++;
-            $("#count").text(i).fadeOut(animationDelay);
-            $(this).css("color", "black")
+        $("#" + names[1]).on({
+            mouseover: function () {
+                i++;
+                $("#count").text(i).fadeIn(animationDelay);
+                $(this).css("color", "magenta")
+            },
+            mouseout: function () {
+                $("#count").text(i).fadeOut(animationDelay);
+                $(this).css("color", "black")
+            }
         });
+
     </script>
 </body>
 
