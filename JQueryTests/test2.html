@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div id="result"></div>
+</body>
+
+<script>
+    const r = $('#result');
+    $(() => {
+        $("html").css({
+            backgroundColor: "black",
+            fontColor: "blue"
+        })
+
+        Person.prototype.city = "Athens";
+
+        var d = new Person("Thiss", 25);
+
+        for (let i = 0; i < 4; i++) {
+            write(d.city);
+        }
+
+        $('h1').click(() => {
+            $(event.target).text(event.type);
+        })
+    });
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    function write(s) {
+        $('<h1>').text(s).appendTo(r);
+    }
+</script>
+
+</html>
